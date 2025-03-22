@@ -321,6 +321,23 @@ input:checked + .toggle-slider:before {
   margin-bottom: 20px;
 }
 
+.calculator-currency-switcher {
+  margin: 10px auto 25px;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(52, 152, 219, 0.05);
+  border-radius: 30px;
+  padding: 5px;
+}
+
+.calculator-currency-switcher button {
+  font-size: 0.9em;
+  flex: 1;
+  max-width: 80px;
+  margin: 0 5px;
+}
+
 .language-switcher button,
 .currency-switcher button {
   padding: 10px 20px;
