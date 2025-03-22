@@ -1,6 +1,8 @@
 const translations = {
   es: {
     calcTitle: "Calculadora de Hipoteca",
+    calcIntro:
+      "Utilice la calculadora a continuación para calcular los pagos mensuales de su hipoteca en base a los detalles proporcionados en el artículo.",
     propertyPrice: "Precio de la Propiedad:",
     loanAmount: "Monto del Préstamo:",
     loanTerm: "Plazo del Préstamo (años):",
@@ -85,6 +87,8 @@ const translations = {
   },
   ru: {
     calcTitle: "Ипотечный Калькулятор",
+    calcIntro:
+      "Используйте калькулятор ниже, чтобы рассчитать ежемесячные платежи по ипотеке на основе информации, представленной в статье.",
     propertyPrice: "Стоимость Недвижимости:",
     loanAmount: "Сумма Кредита:",
     loanTerm: "Срок Кредита (лет):",
@@ -389,6 +393,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Update calculator labels
     document.getElementById("calcTitle").textContent = content.calcTitle;
+    document.querySelector(".calculator-intro").textContent = content.calcIntro;
     document.getElementById("labelPropertyPrice").textContent =
       content.propertyPrice;
     document.getElementById("labelLoanAmount").textContent = content.loanAmount;

@@ -4,6 +4,25 @@
   margin: 40px auto;
   line-height: 1.8;
   font-size: 16px;
+  position: relative;
+  padding-bottom: 60px; /* Add space for the separator */
+}
+
+/* Decorator after article */
+.mortgage-article::after {
+  content: "";
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--secondary-color),
+    transparent
+  );
 }
 
 .mortgage-article h1 {
@@ -85,14 +104,21 @@
   padding: 40px;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  margin: 30px auto;
+  margin: 30px auto 50px;
   max-width: 700px;
   transition: all 0.3s ease;
 }
 
+.calculator-intro {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 1.1em;
+}
+
 .calculator-section h2 {
   color: var(--primary-color);
-  margin-bottom: 35px;
+  margin-bottom: 15px;
   text-align: center;
   font-size: 2em;
   font-weight: 500;
