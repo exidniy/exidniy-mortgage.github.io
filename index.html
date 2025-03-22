@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mortgage Calculator Japan</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+    <style>
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #2ecc71;
+        --background-color: #f5f6fa;
+        --card-bg: #ffffff;
+        --text-color: #2c3e50;
+        --slider-thumb-color: #3498db;
+        --slider-track-color: #e0e0e0;
+      }
+
+      body {
+        font-family: "Roboto", Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <button id="langEs" class="active">Español</button>
+        <button id="langRu">Русский</button>
+      </div>
+
+      <!-- Currency Switcher -->
+      <div class="currency-switcher">
+        <button id="currJPY" class="active">JPY</button>
+        <button id="currCLP">CLP</button>
+      </div>
+
+      <!-- Calculator Section -->
+      <div class="calculator-section">
+        <h2 id="calcTitle">Calculadora de Hipoteca</h2>
+        <form id="mortgageForm">
+          <div class="input-group">
+            <div class="slider-header">
+              <label for="propertyPriceSlider" id="labelPropertyPrice"
+                >Precio de la Propiedad:</label
+              >
+              <div class="value-display" id="propertyPriceDisplay">
+                ¥13,500,000
+              </div>
+            </div>
+            <div class="slider-container">
+              <input
+                type="range"
+                id="propertyPriceSlider"
+                min="1000000"
+                max="50000000"
+                step="100000"
+                value="13500000"
+              />
+              <div class="slider-labels">
+                <span>¥1M</span>
+                <span>¥50M</span>
+              </div>
+            </div>
+            <input
+              type="number"
+              id="propertyPrice"
+              min="0"
+              step="10000"
+              value="13500000"
+              class="hidden-input"
+            />
+          </div>
+
+          <div class="input-group">
+            <div class="slider-header">
+              <label for="loanAmountSlider" id="labelLoanAmount"
+                >Monto del Préstamo:</label
+              >
+              <div class="value-display" id="loanAmountDisplay">
+                ¥14,600,000
+              </div>
+            </div>
+            <div class="slider-container">
+              <input
+                type="range"
+                id="loanAmountSlider"
+                min="1000000"
+                max="50000000"
+                step="100000"
+                value="14600000"
+              />
+              <div class="slider-labels">
+                <span>¥1M</span>
+                <span>¥50M</span>
+              </div>
+            </div>
+            <input
+              type="number"
+              id="loanAmount"
+              min="0"
+              step="10000"
+              value="14600000"
+              class="hidden-input"
+            />
+          </div>
+
+          <div class="input-group">
+            <div class="slider-header">
+              <label for="loanTermSlider" id="labelLoanTerm"
+                >Plazo del Préstamo (años):</label
+              >
+              <div class="value-display" id="loanTermDisplay">20 años</div>
+            </div>
+            <div class="slider-container">
+              <input
+                type="range"
+                id="loanTermSlider"
+                min="1"
+                max="35"
+                step="1"
+                value="20"
+              />
+              <div class="slider-labels">
+                <span>1</span>
+                <span>35</span>
+              </div>
+            </div>
+            <input
+              type="number"
+              id="loanTerm"
+              min="1"
+              max="35"
+              step="1"
+              value="20"
+              class="hidden-input"
+            />
+          </div>
+
+          <div class="input-group">
+            <div class="slider-header">
+              <label for="interestRateSlider" id="labelInterestRate"
+                >Tasa de Interés Anual (%):</label
+              >
+              <div class="value-display" id="interestRateDisplay">2.6%</div>
+            </div>
+            <div class="slider-container">
+              <input
+                type="range"
+                id="interestRateSlider"
+                min="0.1"
+                max="10"
+                step="0.1"
+                value="2.6"
+              />
+              <div class="slider-labels">
+                <span>0.1%</span>
+                <span>10%</span>
+              </div>
+            </div>
+            <input
+              type="number"
+              id="interestRate"
+              min="0"
+              max="20"
+              step="0.1"
+              value="2.6"
+              class="hidden-input"
+            />
+          </div>
+
+          <div class="input-group checkbox-group">
+            <label class="toggle">
+              <input type="checkbox" id="includeExpenses" checked />
+              <span class="toggle-slider"></span>
+              <span id="labelIncludeExpenses"
+                >Incluir Gastos Adicionales (10%)</span
+              >
+            </label>
+          </div>
+        </form>
+
+        <!-- Results Section -->
+        <div class="results">
+          <h3 id="resultsTitle">Resultados</h3>
+          <div class="result-grid">
+            <div class="result-card">
+              <div class="result-label" id="labelMonthlyPayment">
+                Pago Mensual:
+              </div>
+              <div class="result-value" id="monthlyPayment">¥0</div>
+            </div>
+            <div class="result-card">
+              <div class="result-label" id="labelTotalPayment">Pago Total:</div>
+              <div class="result-value" id="totalPayment">¥0</div>
+            </div>
+            <div class="result-card">
+              <div class="result-label" id="labelTotalInterest">
+                Interés Total:
+              </div>
+              <div class="result-value" id="totalInterest">¥0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article Section -->
+      <article class="mortgage-article">
+        <div id="articleContent">
+          <!-- Content will be populated by JavaScript -->
+        </div>
+      </article>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
